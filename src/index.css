@@ -108,3 +108,16 @@ input[type="submit"]:hover {
   font-weight: bold;
   text-align: center;
 }
+
+p {
+  font-size: 2rem;
+}
+
+.temperatura {
+  font-weight: bold;
+}
+
+.grados {
+  vertical-align: super;
+  font-size: 1.5rem;
+}
