@@ -1,3 +1,4 @@
+import axios from "axios"
 import { createContext, useState } from "react"
 
 const ClimaContext = createContext()
@@ -8,6 +9,7 @@ export const ClimaProvider = ({ children }) => {
     ciudad: "",
     pais: ""
   })
+  const [resultadoClima, setResultadoClima] = useState({})
 
   const datosBusqueda = e => {  
     setBusqueda({
@@ -16,8 +18,22 @@ export const ClimaProvider = ({ children }) => {
     })
   }
 
-  const consultarClima = datos => {  
-    console.log(datos);
+  const consultarClima = async datos => {  
+    try {
+      const { ciudad, pais } = datos
+      const appId = import.meta.env.VITE_API_KEY
+      const url = `https://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${appId}`
+
+      const { data } = await axios(url)
+      const { lat, lon } = data[0]
+      const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${appId}`
+
+      const { data: clima } = await axios(urlClima)
+      setResultadoClima(clima)
+
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
