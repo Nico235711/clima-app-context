@@ -1,5 +1,8 @@
+import { useClima } from "../hooks/useClima"
 
 export const Formulario = () => {
+
+  const { busqueda, setBusqueda } = useClima()
   
   return (
     <div className="contenedor">
