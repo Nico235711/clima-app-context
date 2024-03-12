@@ -1,7 +1,10 @@
+import { Formulario } from "./Formulario"
 
 export const AppClima = () => {
 
   return (
-    <div>AppClima</div>
+    <main className="dos-columas">
+      <Formulario />
+    </main>
   )
 }
