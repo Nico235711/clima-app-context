@@ -41,7 +41,8 @@ export const ClimaProvider = ({ children }) => {
       value={{
         busqueda,
         datosBusqueda,
-        consultarClima
+        consultarClima,
+        resultadoClima
       }}
     >
       {children}
