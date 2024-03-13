@@ -23,6 +23,7 @@ export const ClimaProvider = ({ children }) => {
   const consultarClima = async datos => {  
     try {
       setCargando(true)
+      setNoResultado("")
       const { ciudad, pais } = datos
       const appId = import.meta.env.VITE_API_KEY
       const url = `https://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${appId}`
@@ -35,10 +36,11 @@ export const ClimaProvider = ({ children }) => {
 
       setTimeout(() => {
         setResultadoClima(clima)
-      }, 2000);
+      }, 1000);
       
     } catch (error) {
       setNoResultado("No hay resultados")
+      setResultadoClima({})
     } finally {
       setCargando(false)
     }

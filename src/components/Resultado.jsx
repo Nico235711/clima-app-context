@@ -3,6 +3,7 @@ import { useClima } from "../hooks/useClima"
 export const Resultado = () => {
 
   const { resultadoClima } = useClima()
+  console.log(resultadoClima);
   const { name } = resultadoClima
   const { temp, temp_max, temp_min } = resultadoClima.main
 

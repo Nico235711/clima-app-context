@@ -13,8 +13,7 @@ export const AppClima = () => {
 
       {
         cargando ? <Spinner /> :
-        resultadoClima?.name && <Resultado /> ?
-        noResultado : <p>{noResultado}</p>
+        resultadoClima?.name ? <Resultado /> : <p>{noResultado}</p>
       }
     </main>
   )
